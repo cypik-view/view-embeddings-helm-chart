@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: view-embeddings
+  labels:
+    app: view-embeddings
+spec:
+  replicas: {{ .Values.embeddings.replicas }}
+  selector:
+    matchLabels:
+      app: view-embeddings
+  template:
+    metadata:
+      labels:
+        app: view-embeddings
+    spec:
+      containers:
+        - name: view-embeddings
+          image: "{{ .Values.embeddings.image }}:{{ .Values.embeddings.tag }}"
+          ports:
+            - containerPort: {{ .Values.embeddings.port }}
+          env:
+            {{- range $key, $value := .Values.embeddings.env }}
+            - name: {{ $key }}
+              value: "{{ $value }}"
+            {{- end }}
+          volumeMounts:
+            - name: embeddings-storage
+              mountPath: "{{ .Values.embeddings.storage.mountPath }}"
+          stdin: true
+          tty: true
+      volumes:
+        - name: embeddings-storage
+          persistentVolumeClaim:
+            claimName: view-embeddings-pvc
+      restartPolicy: Always
