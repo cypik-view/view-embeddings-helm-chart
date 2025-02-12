@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: view-embeddings-pvc
+  name: {{ .Chart.Name }}-pvc
   labels:
-    app: view-embeddings
+    app: {{ .Chart.Name }}
 spec:
   accessModes:
     - ReadWriteOnce

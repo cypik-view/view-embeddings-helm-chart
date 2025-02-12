@@ -3,12 +3,12 @@ entries:
   view-embeddings:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2025-02-12T12:57:12.522714525+05:30"
+    created: "2025-02-12T13:23:37.032613531+05:30"
     description: A Helm chart for Kubernetes
-    digest: d23387e1ec858b62568f5d0a1f14ebc97af84aaec0d8a4ca84f1397a11792d33
+    digest: 5fb8ab61c16192b358e082a266270f4a433e66a82c3d81c8627887ddc720c4f3
     name: view-embeddings
     type: application
     urls:
     - view-embeddings-0.1.0.tgz
     version: 0.1.0
-generated: "2025-02-12T12:57:12.521590992+05:30"
+generated: "2025-02-12T13:23:37.03204748+05:30"

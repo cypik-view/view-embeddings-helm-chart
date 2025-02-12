@@ -1,22 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: view-embeddings
+  name: {{ .Chart.Name }}
   labels:
-    app: view-embeddings
+    app: {{ .Chart.Name }}
 spec:
   replicas: {{ .Values.embeddings.replicas }}
   selector:
     matchLabels:
-      app: view-embeddings
+      app: {{ .Chart.Name }}
   template:
     metadata:
       labels:
-        app: view-embeddings
+        app: {{ .Chart.Name }}
     spec:
       containers:
-        - name: view-embeddings
-          image: "{{ .Values.embeddings.image }}:{{ .Values.embeddings.tag }}"
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.embeddings.image.repository }}:{{ .Values.embeddings.image.tag }}"
+          imagePullPolicy: {{ .Values.embeddings.image.pullPolicy }}
           ports:
             - containerPort: {{ .Values.embeddings.port }}
           env:
@@ -32,5 +33,5 @@ spec:
       volumes:
         - name: embeddings-storage
           persistentVolumeClaim:
-            claimName: view-embeddings-pvc
-      restartPolicy: {{ .Values.embeddings.restartPolicy }}
+            claimName: {{ .Chart.Name }}-pvc
+      restartPolicy: Always
