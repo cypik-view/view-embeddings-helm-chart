@@ -33,4 +33,4 @@ spec:
         - name: embeddings-storage
           persistentVolumeClaim:
             claimName: view-embeddings-pvc
-      restartPolicy: Always
+      restartPolicy: {{ .Values.embeddings.restartPolicy }}

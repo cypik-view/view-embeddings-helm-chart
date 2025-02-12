@@ -11,5 +11,5 @@ spec:
     - name: wget
       image: busybox
       command: ['wget']
-      args: ['{{ include "view-embeddings.fullname" . }}:{{ .Values.service.port }}']
+      args: ['{{ include "view-embeddings.fullname" . }}:{{ .Values.embeddings.service.port }}']
   restartPolicy: Never

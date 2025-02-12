@@ -8,6 +8,6 @@ spec:
   type: {{ .Values.embeddings.service.type }}
   ports:
     - port: {{ .Values.embeddings.service.port }}
-      targetPort: {{ .Values.embeddings.port }}
+      targetPort: {{ .Values.embeddings.service.targetPort }}
   selector:
     app: view-embeddings
